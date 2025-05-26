@@ -19,8 +19,7 @@ All this to say due to the libraries and data being downloaded I would allocate 
 you don't want your process to be halted due to insufficient disk space.
 
 
-I then followed the process outlined by the Readme.md in the Dragonfly repo, please note that any unsuccesful downloading of prerequistes will
-prevent you from continuing so you will want ample disk storage on Ubuntu:
+I then cloned the repo on my virutal machine and followed the process outlined by the Readme.md in the Dragonfly repo, please note that any unsuccesful downloading of prerequistes will prevent you from continuing so you will want ample disk storage on Ubuntu.
 
 
 
@@ -62,4 +61,15 @@ And now after navigating back to the Dragonfly directory we can now finally buil
 -cd system && mkdir build && make -f Makefile_ubuntu
 
 
+We have now made our build but we must prepare some things before runtime such as segmenting our desired video. We navigate to the videos_preperation directory located in the Dragonfly directory. We then need to follow along with the readme, importantly I found there
+were some packages I was missing (even after downloading the prerequisites listed) so pay attention to any errors that pop up. Make sure any packages downloaded to compensate are in the python3 environment (by using pip3 rathr then pip for commands).
 
+For me I additionally needed the following commands:
+
+-pip3 install numpy
+
+Also when installing the VQMT prerequisite, which requires the openCV prerequisite the link was broken so I had to do some exploration on my own.
+To successfully install I needed to execute the following:
+
+-pip3 install --upgrade pip
+-pip3 install opencv-python
