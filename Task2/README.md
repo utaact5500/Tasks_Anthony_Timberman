@@ -76,3 +76,11 @@ To successfully install I needed to execute the following:
 We then navigate to VQMT directory and build by using:
 
 -make
+
+Finally we can continue following the Readme to prepare the video(s). Put all videos you want to segment into one directory in the 
+video_preperations folder.
+
+*THIS MAY TAKE SOME TIME*
+
+
+Then navigate to the folder and execute python3 run.py [YOURDIRECTORY]
