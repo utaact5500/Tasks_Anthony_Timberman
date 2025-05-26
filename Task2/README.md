@@ -71,5 +71,8 @@ For me I additionally needed the following commands:
 Also when installing the VQMT prerequisite, which requires the openCV prerequisite the link was broken so I had to do some exploration on my own.
 To successfully install I needed to execute the following:
 
--pip3 install --upgrade pip
--pip3 install opencv-python
+-sudo apt-get install libopencv-dev
+
+We then navigate to VQMT directory and build by using:
+
+-make
