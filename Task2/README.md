@@ -1,10 +1,12 @@
 APPROACH:
+
 I found this task more approachable to attempt after beginning task 1. I read through the Dragonfly Documentation (paying special attention to the
 sections indicated in the pdf). This combined with researching I had done for task 1 gave me a vague idea of my process.
 
 
 
 SETUP:
+
 I began by installing Oracle VirtualBox and setting up Ubuntu as I primarily operate off of a windows device.
 I had not had to do this prior as I had it set up on my Macbook that was stolen some months back, but now it was necessary.
 An IMPORTANT note here is to make sure that the Ubuntu Virtual Machine being setup has AMPLE space when beginning as this process
