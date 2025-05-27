@@ -20,3 +20,10 @@ SETUP:
 
 We begin by downloading Unity Hub and creating an account before downloading Unity.
 Assuming you do not have a VR device we want to be able to simulate control in Unity.
+In which casenavigate to Window -> Package Manager.
+Under Package Manager we will search for MockHMD XR Plugin and download it.
+Navigate back to the main screen and go to Edit-> Project Settings.
+Under Project Settings we can navigate down to XR - Plugin Management and tick the box for Mock HMD Loader.
+
+We should now be able to simulate VR control with mouse and keyboard by pressing play and following the controls on-screen.
+This was unfortunately my limits to simulating a streamed vide player, as I could get a media player working in unity but was unable to do the backend.
