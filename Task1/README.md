@@ -1,4 +1,4 @@
-APPROACH:
+##APPROACH:
 
 This is where I first began before I became stuck in several places and found it more useful to begin on Task 2. I knew little about Unity, VR, and 
 how to execute a client-server implementation. I researched the following on the internet and YouTube:
