@@ -84,3 +84,10 @@ video_preperations folder.
 
 
 Then navigate to the folder and execute python3 run.py [YOURDIRECTORY]
+
+This should create a directory for each video within YOURDIRECTORY split into different folders depending on specifications such as Quantization 
+Parameters.
+
+This is where I left off in the process as when analyzing the "server" files within the system directory I could not find a way to establish 
+connection with a client, the furthest I reached was executing command "./PATH_TO_SERVER_EXECUTABLE PATH_TO_VIDEO_DIRECTORY SOME_NUMBER
+Where I could not alayze what SOME_NUMBER was for (possibly a socket?)
