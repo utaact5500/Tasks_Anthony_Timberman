@@ -1,11 +1,11 @@
-APPROACH:
+**APPROACH:**
 
 I found this task more approachable to attempt after beginning task 1. I read through the Dragonfly Documentation (paying special attention to the
 sections indicated in the pdf). This combined with researching I had done for task 1 gave me a vague idea of my process.
 
 
 
-SETUP:
+**SETUP:**
 
 I began by installing Oracle VirtualBox and setting up Ubuntu as I primarily operate off of a windows device.
 I had not had to do this prior as I had it set up on my Macbook that was stolen some months back, but now it was necessary.
@@ -23,71 +23,77 @@ I then cloned the repo on my virutal machine and followed the process outlined b
 
 
 
-DOWNLOAD PREREQUISITES:
+**DOWNLOAD PREREQUISITES:**
+
+```
+apt-get update  && apt-get install build-essential software-properties-common -y  && add-apt-repository ppa:ubuntu-toolchain-r/test && apt-get update  && apt-get install gcc-9 g++-9 -y  && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-9
+```
+```
+add-apt-repository ppa:jonathonf/ffmpeg-4
+```
+```
+apt-get install -y  ffmpeg  libgflags-dev libgoogle-glog-dev libboost-all-dev libavcodec-dev libavformat-dev libswscale-dev libdouble-conversion-dev libfmt-dev libevent-dev libssl-dev cmake  mahimahi
+```
+
+**FOR FOLLY AND FMT**
 
 
--apt-get update  && apt-get install build-essential software-properties-common -y  && add-apt-repository ppa:ubuntu-toolchain-r/test && apt-get update  && apt-get install gcc-9 g++-9 -y  && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-9
-
-
--add-apt-repository ppa:jonathonf/ffmpeg-4
-
-
--apt-get install -y  ffmpeg  libgflags-dev libgoogle-glog-dev libboost-all-dev libavcodec-dev libavformat-dev libswscale-dev libdouble-conversion-dev libfmt-dev libevent-dev libssl-dev cmake  mahimahi
-
-
-*FOR FOLLY AND FMT*
-
-
-If you are running from an Ubuntu virtual machine you will have to edit the makefile outlined before executing the final command: make install
+If you are running on an Ubuntu virtual machine you will have to edit the makefile outlined before executing the final command: 
+```
+make install
+```
 for both folly and fmt.
-This is because the default has it create a directory in a path that does not exist on a UBUNTU machine ( 'usr/local/...').
-In the files titled "cmake_install.cmake" located in 'home/[YOURUSER]/Dragonfly/third-party-lib/[folly or fmt respectively]/build' you will need
-to open the file and under the first block titled "# Set the install prefix", you should see a string for a path discussed earlier that
-you will alter to one of your choice. From there you can proceed with the "make install" command
+This is because the default has it create a directory in a path that does not exist on a UBUNTU machine (*usr/local/...*).
+In the files titled **cmake_install.cmake** located in *'home/**YOURUSER**/Dragonfly/third-party-lib/**folly or fmt respectively**/build'* you will need to open the file and under the first block titled *'# Set the install prefix'*, you should see a string for a path discussed earlier that
+you will alter to one of your choice. From there you can proceed with the *make install* command
 
 
 FMT:
-
--cd ~/Dragonfly/third-party-lib/fmt && mkdir build && cd build && cmake .. && make -j2 && make install
-
+```
+cd ~/Dragonfly/third-party-lib/fmt && mkdir build && cd build && cmake .. && make -j2 && make install
+```
 
 Folly:
-
--cd ~/Dragonfly/third-party-lib/folly-2021.03.15.00 && mkdir _build && cd _build && cmake .. && make -j2 && make install
-
+```
+cd ~/Dragonfly/third-party-lib/folly-2021.03.15.00 && mkdir _build && cd _build && cmake .. && make -j2 && make install
+```
 
 And now after navigating back to the Dragonfly directory we can now finally build:
+```
+cd system && mkdir build && make -f Makefile_ubuntu
+```
 
--cd system && mkdir build && make -f Makefile_ubuntu
-
-
-We have now made our build but we must prepare some things before runtime such as segmenting our desired video. We navigate to the videos_preperation directory located in the Dragonfly directory. We then need to follow along with the readme, importantly I found there
-were some packages I was missing (even after downloading the prerequisites listed) so pay attention to any errors that pop up. Make sure any packages downloaded to compensate are in the python3 environment (by using pip3 rathr then pip for commands).
+We have now made our build but we must prepare some things before runtime such as segmenting our desired video. We navigate to the *videos_preperation* directory located in the *Dragonfly* directory. We then need to follow along with the readme, importantly I found there
+were some packages I was missing (even after downloading the prerequisites listed) so pay attention to any errors that pop up. Make sure any packages downloaded to compensate are in the python3 environment (by using pip3/python3 rather than pip/python for commands).
 
 For me I additionally needed the following commands:
-
--pip3 install numpy
-
+```
+pip3 install numpy
+```
 Also when installing the VQMT prerequisite, which requires the openCV prerequisite the link was broken so I had to do some exploration on my own.
 To successfully install I needed to execute the following:
-
--sudo apt-get install libopencv-dev
-
+```
+sudo apt-get install libopencv-dev
+```
 We then navigate to VQMT directory and build by using:
-
--make
-
+```
+make
+```
 Finally we can continue following the Readme to prepare the video(s). Put all videos you want to segment into one directory in the 
 video_preperations folder.
 
-*THIS MAY TAKE SOME TIME*
+**WARNING: THIS MAY TAKE SOME TIME**
 
 
-Then navigate to the folder and execute python3 run.py [YOURDIRECTORY]
-
-This should create a directory for each video within YOURDIRECTORY split into different folders depending on specifications such as Quantization 
-Parameters.
+Navigate to the folder and execute 
+```
+python3 run.py YOURDIRECTORY
+```
+This should create a directory for each video within **YOURDIRECTORY** split into different folders depending on specifications such as Quantization Parameters.
 
 This is where I left off in the process as when analyzing the "server" files within the system directory I could not find a way to establish 
-connection with a client, the furthest I reached was executing command "./PATH_TO_SERVER_EXECUTABLE PATH_TO_VIDEO_DIRECTORY SOME_NUMBER
-Where I could not alayze what SOME_NUMBER was for (possibly a socket?)
+connection with a client, the furthest I reached was executing command 
+```
+./PATH_TO_SERVER_EXECUTABLE PATH_TO_VIDEO_DIRECTORY SOME_NUMBER
+```
+Where I could not analyze what SOME_NUMBER was for (possibly a socket?)
